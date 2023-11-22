@@ -57,11 +57,7 @@ namespace newthing
             DataTable prop = new DataTable();
             sda.Fill(prop);
             time.Text = prop.Rows[0][3].ToString();
-            DateTime.TryParseExact(time.Text,
-                       "yy-MM-dd hh:m:ss",
-                        System.Globalization.CultureInfo.InvariantCulture,
-                        System.Globalization.DateTimeStyles.None,
-                        out daMeet);
+            DateTime.TryParse(time.Text, out daMeet);
         }
 
         private void confirm_Click(object sender, EventArgs e)
@@ -71,6 +67,10 @@ namespace newthing
             cmd.ExecuteNonQuery();
             cmd.CommandText = $"INSERT INTO engagements VALUES('{UserToMeet.UserID}', " +
                 $"'Meeting with {user.ForeName} {user.SurName}', '{daMeet.Year}-{daMeet.Month}-{daMeet.Day} {daMeet.Hour}:{daMeet.Minute.ToString("D2")}:{daMeet.Second.ToString("D2")}')";
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = $"DELETE FROM notifications WHERE UserID = '{user.UserID}' AND description = '{desc}'";
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = $"DELETE FROM MeetingProposal WHERE senderID = '{meetManID}' AND recipientID = '{user.UserID}' AND description = '{desc}'";
             cmd.ExecuteNonQuery();
             if (user.UserID[0].ToString() == "S")
             {
@@ -93,6 +93,11 @@ namespace newthing
                 con.Close();
                 this.Hide();
             }
+        }
+
+        private void Reject_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(daMeet.ToString());
         }
     }
 }

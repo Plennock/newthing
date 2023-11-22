@@ -62,6 +62,7 @@
             this.Reject.TabIndex = 3;
             this.Reject.Text = "Reject";
             this.Reject.UseVisualStyleBackColor = true;
+            this.Reject.Click += new System.EventHandler(this.Reject_Click);
             // 
             // label2
             // 
