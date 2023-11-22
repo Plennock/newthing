@@ -26,6 +26,7 @@ namespace newthing
         public DataTable notifs;
         public DataTable engagements;
         public User user;
+
         public Menu(User plob)
         {
             user = plob;

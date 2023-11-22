@@ -19,21 +19,6 @@ namespace newthing
             InitializeComponent();
         }
 
-        private void data_show()
-        {
-            var con = new SQLiteConnection(cs);
-            con.Open();
-            string stm = "SELECT * FROM users";
-            var cmd = new SQLiteCommand(stm, con);
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                //dataGridView1.Rows.Insert(0, dr.GetString(0), dr.GetString(1));
-
-            }
-        }
-
         private void create_db()
         {
             if ((System.IO.File.Exists(path)))
@@ -42,7 +27,7 @@ namespace newthing
                 using (var sqlite = new SQLiteConnection(@"data source =" + path))
                 {
                     sqlite.Open();
-                    string sql = "DROP TABLE IF EXISTS users";
+                    string sql = "DROP TABLE IF EXISTS users";  
                     SQLiteCommand command = new SQLiteCommand(sql, sqlite);
                     command.ExecuteNonQuery();
                     sql = "CREATE TABLE IF NOT EXISTS users(UserID varchar(20), LoginID varchar(20), Forename MEDIUMTEXT, Surname MEDIUMTEXT)";

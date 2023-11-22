@@ -20,6 +20,10 @@ namespace newthing
         public User user;
         public List<User> relatedUsers = new List<User>();
 
+        SQLiteConnection con;
+        SQLiteCommand cmd;
+        SQLiteDataReader dr;
+
         public meetingRequest(User blonk)
         {
             user = blonk;
@@ -28,9 +32,9 @@ namespace newthing
 
         private void meetingRequest_Load(object sender, EventArgs e)
         {
-            var con = new SQLiteConnection(cs);
+            con = new SQLiteConnection(cs);
             con.Open();
-            var cmd = new SQLiteCommand(con);
+            cmd = new SQLiteCommand(con);
             string querry = "";
             int index = 0;
             if(user.UserID[0].ToString() == "S")
@@ -73,9 +77,9 @@ namespace newthing
         private void button1_Click(object sender, EventArgs e)
         {
             User UserToMeet = relatedUsers[Relations.SelectedIndex];
-            var con = new SQLiteConnection(cs);
+            con = new SQLiteConnection(cs);
             con.Open();
-            var cmd = new SQLiteCommand(con);
+            cmd = new SQLiteCommand(con);
             DateTime daMeet = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day, Convert.ToInt32(Hours.SelectedItem), Convert.ToInt32(Minutes.SelectedItem), 0);
             string querry = $"SELECT * FROM engagements WHERE UserID = '{user.UserID}' OR UserID = '{UserToMeet.UserID}'";;
             SQLiteDataAdapter sda = new SQLiteDataAdapter(querry, con);
@@ -98,16 +102,13 @@ namespace newthing
             {
                 try
                 {
-                    /* cmd.CommandText = $"INSERT INTO engagements VALUES('{user.UserID}', " +
-                         $"'Meeting with {UserToMeet.ForeName} {UserToMeet.SurName}', '{daMeet.Year}-{daMeet.Month}-{daMeet.Day} {daMeet.Hour}:{daMeet.Minute.ToString("D2")}:{daMeet.Second.ToString("D2")}')";
-                     cmd.ExecuteNonQuery();
-                    */
-                     cmd.CommandText = $"INSERT INTO MeetingProposal VALUES('{UserToMeet.UserID}', " +
-                         $"'Meeting with {user.ForeName} {user.SurName}', '{daMeet.Year}-{daMeet.Month}-{daMeet.Day} {daMeet.Hour}:{daMeet.Minute.ToString("D2")}:{daMeet.Second.ToString("D2")}')";
-                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = $"INSERT INTO notifications VALUES('{UserToMeet.UserID}', " +
-                         $"'Meeting request from {user.ForeName} {user.SurName}, {user.UserID}', 'MR')";
+
+                    cmd.CommandText = $"INSERT INTO notifications VALUES('{UserToMeet.UserID}', 'Meeting request from {user.ForeName} {user.SurName}, {user.UserID}', 'MR')";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = $"INSERT INTO MeetingProposal VALUES('{UserToMeet.UserID}', '{user.UserID}', 'Meeting request from {user.ForeName} {user.SurName}, {user.UserID}', '{daMeet.Year.ToString()}-{daMeet.Month.ToString("D2")}-{daMeet.Day.ToString("D2")} {daMeet.Hour.ToString("D2")}:{daMeet.Minute.ToString("D2")}:00')";
+                    cmd.ExecuteNonQuery();
+
                     Menu menu = new Menu(user);
                     menu.Show();
                     this.Hide();

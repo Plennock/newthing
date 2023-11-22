@@ -34,7 +34,7 @@ namespace newthing
             InitializeComponent();
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void TutorMenu_Load(object sender, EventArgs e)
         {
 
             label1.Text = $"Welcome {user.ForeName} {user.SurName}";
@@ -100,11 +100,6 @@ namespace newthing
                     this.Hide();
                 }
             }
-        }
-
-        private void TutorMenu_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void SupervisorViewButton_Click(object sender, EventArgs e)
