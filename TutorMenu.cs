@@ -141,5 +141,11 @@ namespace newthing
 
         }
 
+        private void MenuExitButton_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
+        }
     }
 }

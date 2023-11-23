@@ -36,6 +36,7 @@
             this.EngagBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.MenuExitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -113,11 +114,22 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Notifications";
             // 
+            // MenuExitButton
+            // 
+            this.MenuExitButton.Location = new System.Drawing.Point(679, 31);
+            this.MenuExitButton.Name = "MenuExitButton";
+            this.MenuExitButton.Size = new System.Drawing.Size(112, 34);
+            this.MenuExitButton.TabIndex = 8;
+            this.MenuExitButton.Text = "Exit";
+            this.MenuExitButton.UseVisualStyleBackColor = true;
+            this.MenuExitButton.Click += new System.EventHandler(this.MenuExitButton_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MenuExitButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.EngagBox);
@@ -144,5 +156,6 @@
         private ListBox EngagBox;
         private Label label3;
         private Label label4;
+        private Button MenuExitButton;
     }
 }

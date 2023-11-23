@@ -33,6 +33,7 @@
             this.Relations = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ExitToMenuButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Details
@@ -83,11 +84,22 @@
             this.listBox1.TabIndex = 8;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
+            // ExitToMenuButton
+            // 
+            this.ExitToMenuButton.Location = new System.Drawing.Point(676, 383);
+            this.ExitToMenuButton.Name = "ExitToMenuButton";
+            this.ExitToMenuButton.Size = new System.Drawing.Size(112, 34);
+            this.ExitToMenuButton.TabIndex = 9;
+            this.ExitToMenuButton.Text = "Exit";
+            this.ExitToMenuButton.UseVisualStyleBackColor = true;
+            this.ExitToMenuButton.Click += new System.EventHandler(this.ExitToMenuButton_Click);
+            // 
             // viewSupervisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ExitToMenuButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Details);
             this.Controls.Add(this.HistoryBox);
@@ -108,5 +120,6 @@
         private ListBox Relations;
         private Label label1;
         private ListBox listBox1;
+        private Button ExitToMenuButton;
     }
 }

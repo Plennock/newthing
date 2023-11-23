@@ -56,7 +56,7 @@ namespace newthing
                     sql = "CREATE TABLE IF NOT EXISTS notifications(UserID varchar(20), description MEDIUMTEXT, code varchar(45))";
                     command = new SQLiteCommand(sql, sqlite);
                     command.ExecuteNonQuery();
-                    sql = "INSERT INTO notifications VALUES('P1', 'yeah', 'MR'), ('S1', 'Meeting request from Ben Penders, P1', 'MR'), ('S1', 'someb', 'PR')";
+                    sql = "INSERT INTO notifications VALUES('P1', 'Meeting request from Mark Sellet, S2', 'MR'), ('S1', 'Meeting request from Ben Penders, P1', 'MR'), ('S1', 'A report due', 'PR')";
                     command = new SQLiteCommand(sql, sqlite);
                     command.ExecuteNonQuery();
 
@@ -66,7 +66,7 @@ namespace newthing
                     sql = "CREATE TABLE IF NOT EXISTS MeetingProposal(recipientID varchar(20), senderID varchar(20), description MEDIUMTEXT, time DATETIME)";
                     command = new SQLiteCommand(sql, sqlite);
                     command.ExecuteNonQuery();
-                    sql = "INSERT INTO MeetingProposal VALUES('P1', 'S1', 'yeah', '2023-11-27 15:30:00'), ('S1', 'P1', 'Meeting request from Ben Penders, P1', '2023-11-24 13:00:00')";
+                    sql = "INSERT INTO MeetingProposal VALUES('P1', 'S1', 'meeting request from John Lincoln, S1', '2023-11-27 15:30:00'), ('S1', 'P1', 'Meeting request from Ben Penders, P1', '2023-11-24 13:00:00')";
                     command = new SQLiteCommand(sql, sqlite);
                     command.ExecuteNonQuery();
 
@@ -78,7 +78,7 @@ namespace newthing
                     command.ExecuteNonQuery();
                     sql = "INSERT INTO engagements VALUES('P1', 'meeting with mark Sellet', '2023-11-18 15:30:00'), " +
                         "('S2', 'meeting with Ben Penders', '2023-11-18 15:30:00'), " +
-                        "('S1', 'some bullshii', '2023-11-20 15:00:00')";
+                        "('S1', 'Lab session for module', '2023-11-20 15:00:00')";
                     command = new SQLiteCommand(sql, sqlite);
                     command.ExecuteNonQuery();
 
@@ -104,8 +104,7 @@ namespace newthing
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show("YEah all good", "Error", MessageBoxButtons.OK);
-            create_db();
+           //create_db();
         }
 
         private void label1_Click(object sender, EventArgs e)

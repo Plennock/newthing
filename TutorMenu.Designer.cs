@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NotifBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.MenuExitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SupervisorViewButton
@@ -102,11 +103,22 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "label1";
             // 
+            // MenuExitButton
+            // 
+            this.MenuExitButton.Location = new System.Drawing.Point(668, 372);
+            this.MenuExitButton.Name = "MenuExitButton";
+            this.MenuExitButton.Size = new System.Drawing.Size(112, 34);
+            this.MenuExitButton.TabIndex = 20;
+            this.MenuExitButton.Text = "Exit";
+            this.MenuExitButton.UseVisualStyleBackColor = true;
+            this.MenuExitButton.Click += new System.EventHandler(this.MenuExitButton_Click);
+            // 
             // TutorMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(803, 450);
+            this.Controls.Add(this.MenuExitButton);
             this.Controls.Add(this.SupervisorViewButton);
             this.Controls.Add(this.EngagBox);
             this.Controls.Add(this.NotifSelectButton);
@@ -131,5 +143,6 @@
         private Label label2;
         private ListBox NotifBox;
         private Label label1;
+        private Button MenuExitButton;
     }
 }

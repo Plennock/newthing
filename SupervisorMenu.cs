@@ -104,7 +104,7 @@ namespace newthing
                     ProgressReport meetingApprove = new ProgressReport(user, desc);
                     cmd.CommandText = $"DELETE FROM notifications WHERE UserID= '{user.UserID}' AND description = '{NotifBox.SelectedItem.ToString()}'";
                     cmd.ExecuteNonQuery();
-                    ReportApproval ReportApprove = new ReportApproval(user, dTable.Rows[0][2].ToString().Substring(dTable.Rows[0][2].ToString().Length - 4), dTable.Rows[0][2].ToString());
+                    ReportApproval ReportApprove = new ReportApproval(user, dTable.Rows[0][1].ToString().Substring(dTable.Rows[0][1].ToString().Length - 2), dTable.Rows[0][1].ToString());
                     ReportApprove.Show();
                     this.Hide();
                 }
@@ -185,6 +185,13 @@ namespace newthing
             MakeReport report = new MakeReport(user);
             report.Show();
             this.Hide();
+        }
+
+        private void MenuExitButton_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
         }
     }
 }

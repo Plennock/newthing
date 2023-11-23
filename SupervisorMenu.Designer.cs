@@ -37,6 +37,7 @@
             this.StudentViewButton = new System.Windows.Forms.Button();
             this.ReportMaker = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.MenuExitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EngagBox
@@ -129,11 +130,22 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Engagements";
             // 
+            // MenuExitButton
+            // 
+            this.MenuExitButton.Location = new System.Drawing.Point(685, 388);
+            this.MenuExitButton.Name = "MenuExitButton";
+            this.MenuExitButton.Size = new System.Drawing.Size(112, 34);
+            this.MenuExitButton.TabIndex = 15;
+            this.MenuExitButton.Text = "Exit";
+            this.MenuExitButton.UseVisualStyleBackColor = true;
+            this.MenuExitButton.Click += new System.EventHandler(this.MenuExitButton_Click);
+            // 
             // SupervisorMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 450);
+            this.Controls.Add(this.MenuExitButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ReportMaker);
             this.Controls.Add(this.StudentViewButton);
@@ -162,5 +174,6 @@
         private Button StudentViewButton;
         private Button ReportMaker;
         private Label label3;
+        private Button MenuExitButton;
     }
 }

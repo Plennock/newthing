@@ -94,5 +94,12 @@ namespace newthing
                 Details.Text = "Yunky";
             }
         }
+
+        private void ExitToMenuButton_Click(object sender, EventArgs e)
+        {
+            SupervisorMenu supmen = new SupervisorMenu(user);
+            this.Close();
+            supmen.Show();
+        }
     }
 }

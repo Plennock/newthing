@@ -97,7 +97,9 @@ namespace newthing
 
         private void Reject_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(daMeet.ToString());
+            meetingRequest req = new meetingRequest(user);
+            this.Close();
+            req.Show();
         }
     }
 }

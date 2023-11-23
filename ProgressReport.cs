@@ -70,7 +70,7 @@ namespace newthing
                 var cmd = new SQLiteCommand(con);
                 cmd.CommandText = $"INSERT INTO notifications VALUES('{SupID}', '{textBox1.Text} from {user.UserID}', 'RS')";
                 cmd.ExecuteNonQuery();
-                SupervisorMenu menu = new SupervisorMenu(user);
+                Menu menu = new Menu(user);
                 menu.Show();
                 this.Hide();
             }

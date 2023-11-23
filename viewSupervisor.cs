@@ -135,5 +135,12 @@ namespace newthing
                 Details.Text = "No report here.";
             }
         }
+
+        private void ExitToMenuButton_Click(object sender, EventArgs e)
+        {
+            TutorMenu tutmen = new TutorMenu(user);
+            this.Close();   
+            tutmen.Show();
+        }
     }
 }

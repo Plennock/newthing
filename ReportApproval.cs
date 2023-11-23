@@ -36,7 +36,7 @@ namespace newthing
 
         private void ReportApproval_Load(object sender, EventArgs e)
         {
-
+            content.Text = ReportContent;
         }
 
         private void Approve_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace newthing
             var con = new SQLiteConnection(cs);
             con.Open();
             var cmd = new SQLiteCommand(con);
-            cmd.CommandText = $"INSERT INTO oldReports VALUES('{studentID}', '{textBox1.Text}', '{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day} {DateTime.Now.Hour}:{DateTime.Now.Minute.ToString("D2")}:{DateTime.Now.Second.ToString("D2")}')";
+            cmd.CommandText = $"INSERT INTO oldReports VALUES('{studentID}', '{content.Text}', '{DateTime.Now.Year.ToString()}-{DateTime.Now.Month.ToString("D2")}-{DateTime.Now.Day.ToString("D2")} {DateTime.Now.Hour.ToString("D2")}:{DateTime.Now.Minute.ToString("D2")}:00')";
             cmd.ExecuteNonQuery();
             SupervisorMenu menu = new SupervisorMenu(user);
             menu.Show();
