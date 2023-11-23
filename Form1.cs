@@ -21,7 +21,7 @@ namespace newthing
 
         private void create_db()
         {
-            if ((System.IO.File.Exists(path)))
+            if (!(System.IO.File.Exists(path)))
             {
                 SQLiteConnection.CreateFile(path);
                 using (var sqlite = new SQLiteConnection(@"data source =" + path))
@@ -104,7 +104,7 @@ namespace newthing
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           //create_db();
+            create_db();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -121,7 +121,7 @@ namespace newthing
         {
 
         }
-        //insert data
+
         private void LoginButton_Click(object sender, EventArgs e)
         {
             var con = new SQLiteConnection(cs);
@@ -182,103 +182,19 @@ namespace newthing
             {
                 con.Close();
             }
-            /*
-            try
-            {
-                cmd.CommandText = "INSERT INTO Test(ID, Name) VALUES(@ID, @Name)";
-
-                string NAME = txt_UserID.Text;
-                string ID = txt_Password.Text;
-
-                cmd.Parameters.AddWithValue("@Name", NAME);
-                cmd.Parameters.AddWithValue("@ID", ID);
-
-                dataGridView1.ColumnCount = 2;
-                dataGridView1.Columns[0].Name = "ID";
-                dataGridView1.Columns[1].Name = "Name";
-                string[] row = new string[] { ID, NAME };
-                dataGridView1.Rows.Add(row);
-
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Cannot insert data");
-            }
-            */
         }
 
-        //update
         private void Clear_Button_Click(object sender, EventArgs e)
         {
             txt_UserID.Clear();
             txt_Password.Clear();
             txt_UserID.Focus();
-
-            /*
-            var con = new SQLiteConnection(cs);
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-
-            try
-            {
-                cmd.CommandText = "UPDATE Test Set ID=@ID where name=@Name";
-                cmd.Prepare();
-                cmd.Parameters.AddWithValue("@Name", txt_UserID.Text);
-                cmd.Parameters.AddWithValue("@ID", txt_Password.Text);
-
-                string NAME = txt_UserID.Text;
-                string ID = txt_Password.Text;
-
-                cmd.ExecuteNonQuery();
-                dataGridView1.Rows.Clear();
-                data_show();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Cannot insert data");
-                return;
-            }
-            */
         }
 
 
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();
-            /*
-            var con = new SQLiteConnection(cs);
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-
-            try
-            {
-                cmd.CommandText = "DELETE Test Set where name=@Name";
-                cmd.Prepare();
-                cmd.Parameters.AddWithValue("@Name", txt_UserID.Text);
-
-                cmd.ExecuteNonQuery();
-                dataGridView1.Rows.Clear();
-                data_show();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Cannot delete data");
-                return;
-            }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            var con = new SQLiteConnection(cs);
-            con.Open();
-            var cmd = new SQLiteCommand(con);
-            cmd.CommandText = "DELETE FROM Test";
-
-            cmd.ExecuteNonQuery();
-            dataGridView1.Rows.Clear();
-            data_show();*/
         }
            
     }
